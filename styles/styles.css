@@ -1,0 +1,49 @@
+/* import other css */
+@import url(nav_and_footer.css);
+@import url(top_button.css);
+@import url(accordion.css);
+@import url(dropdown.css);
+@import url(texts.css);
+@import url(media.css);
+
+/* Modify body element */
+body {
+    background-image: url(/pics/bg/Elden-Ring-Wallpaper-body-2.png);
+    background-color: rgb(65, 65, 65);
+    background-position: center;
+    background-size: cover;
+    min-width: 330px;
+}
+
+/* Modify content area */
+#content {
+    border-right: 1.5px double rgb(155, 155, 155);
+    border-left: 1.5px double rgb(155, 155, 155);
+    min-height: calc(100vh - 197px);
+    max-width: 1920px;
+    padding: 0;
+}
+
+section {
+    background-image: url(/pics/bg/Elden-Ring-Wallpaper-content-2.png);
+    background-color: rgb(237, 237, 237);
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+}
+
+/* Make horizontal line invisible */
+hr {
+    opacity: 0;
+}
+
+/* Modify row */
+.row {
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+
+.row * {
+    flex-shrink: 1;
+}

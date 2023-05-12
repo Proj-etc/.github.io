@@ -1,0 +1,115 @@
+/* Modify headings: 1 - 7 and paragraph*/
+/* Page main heading */
+h1 {
+    border-bottom: 2px double rgb(171, 150, 111);
+    border-top: 2px double rgb(171, 150, 111);
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 2.00rem;
+    font-weight: bold;
+}
+
+/* Page secondary heading */
+h2 {
+    border-bottom: 2px double rgb(171, 150, 111);
+    border-top: 2px double rgb(171, 150, 111);
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    font-size: 1.50rem;
+    font-weight: bold;
+    text-align: left;
+}
+
+/* Card heading */
+h3 {
+    border-bottom: 2.5px ridge rgba(182, 149, 87, 0.5);
+    border-top: 5px ridge rgba(182, 149, 87, 0.5);
+    color: rgb(255, 255, 255);
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+h3 a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+/* Link text: navigation and footer bars */
+h4 a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 1.00rem;
+}
+
+/* Carousel heading */
+h5 {
+    border: 5px double rgb(171, 150, 111);
+    color: rgb(255, 255, 255);
+    border-bottom-width: 0px;
+    border-top-width: 0px;
+    text-align: center;
+    font-size: 2.00rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Link text: other */
+/* Link text: link */
+h6 a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+/* Link text: other hover */
+h6 a:hover {
+    text-decoration: underline solid rgb(171, 150, 111);
+    color: rgb(171, 150, 111);
+}
+
+/* link text: other if inside carousel */
+.carousel-inner h6 {
+    border: 5px double rgb(171, 150, 111);
+    border-top-width: 0;
+    margin: 0;
+}
+
+/* Paragraph */
+p {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+/* Spans */
+/* Lowest: Used example tables */
+.lwst {
+    color: rgb(255, 0, 0);
+    font-weight: bold;
+}
+
+/* Highest: Used example tables */
+.hghst {
+    color: rgb(0, 255, 0);
+    font-weight: bold;
+}
+
+/* Labels */
+.form-floating label {
+    color: rgba(31, 31, 31, 0.75);
+}
+
+/* Em */
+em {
+    color: rgb(201, 180, 180);
+    font-weight: bolder;
+}

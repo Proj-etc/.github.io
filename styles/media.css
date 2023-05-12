@@ -1,0 +1,90 @@
+/* Modify card */
+.card {
+    background-color: rgb(36, 36, 36);
+}
+
+.card-body {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+/* Custom cards */
+/* Media frame */
+.pic-frame.card-img-overlay{
+    background-image: url(/pics/assets/Picture_Frame.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    padding: 0;
+}
+
+/* Remove card background and modify */
+.card-rmv-bg {
+    background-color: rgba(35, 34, 34, 0);
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+/* Class card */
+.class-card img, .class-card img {
+    align-content: center;
+    height: auto;
+    width: 125px;
+}
+
+.wpn-icon img {
+    height: 35px;
+    width: 35px;
+}
+
+/* Media card with image/video left or right */ 
+.media-carousel img, .media-carousel video {
+    border: 5px double rgb(171, 150, 111);
+    border-radius: 15px 15px 0 0;
+    height: auto;
+    width: 100%;
+}
+
+.media-carousel p {
+    border: 5px double rgb(171, 150, 111);
+    border-radius: 0 0 15px 15px;
+    border-top-width: 0px;
+}
+
+.media-carousel span {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.media-carousel ul {
+    border: 5px double rgb(171, 150, 111);
+    border-radius: 0 0 15px 15px;
+    border-top-width: 0px;
+    text-align: left;
+}
+
+.media-carousel ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.media-card img, .media-card video {
+    background-image: url(/pics/assets/Media-file-error-in-online-video.png);
+    border: 5px ridge rgb(171, 150, 111);
+    background-size: 100% 100%;
+    border-radius: 15px;
+    height: auto;
+    width: 100%;
+}
+
+.media-card p {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
