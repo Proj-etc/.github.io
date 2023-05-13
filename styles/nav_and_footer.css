@@ -22,6 +22,18 @@ nav.bg-custom, footer.bg-custom {
     align-self: center;
 }
 
+.nav-link:hover {
+    color: #fff;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: rgb(33, 33, 33);
+    border-left: 5px double rgb(171, 150, 111);
+    border-right: 5px double rgb(171, 150, 111);
+    border-radius: 100%;
+}
+
 .navbar, .navbar-brand {
     padding: 1px 0 1px 0;
 }
