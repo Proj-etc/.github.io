@@ -6,44 +6,52 @@
 @import url(texts.css);
 @import url(media.css);
 
+/* CSS Variables */
+:root{
+    --bg-darker-1: 0.7;
+    --bg-darker-2: 0.9;
+}
+
 /* Modify body element */
 body {
-    background-image: url(/pics/bg/Elden-Ring-Wallpaper-body-2.png);
-    background-color: rgb(65, 65, 65);
-    background-position: center;
-    background-size: cover;
-    min-width: 330px;
+  background-image: linear-gradient(rgba(0, 0, 0, var(--bg-darker-1)), rgba(0, 0, 0, var(--bg-darker-1))),
+    url(/pics/bg/supa_bg2.jpg);
+  background-color: rgb(65, 65, 65);
+  background-position: center;
+  background-size: cover;
+  min-width: 330px;
 }
 
 /* Modify content area */
 #content {
-    border-right: 1.5px double rgb(155, 155, 155);
-    border-left: 1.5px double rgb(155, 155, 155);
-    min-height: calc(100vh - 197px);
-    max-width: 1920px;
-    padding: 0;
+  border-right: 1.5px double rgb(155, 155, 155);
+  border-left: 1.5px double rgb(155, 155, 155);
+  min-height: calc(100vh - 197px);
+  max-width: 1920px;
+  padding: 0;
 }
 
 section {
-    background-image: url(/pics/bg/Elden-Ring-Wallpaper-content-2.png);
-    background-color: rgb(237, 237, 237);
-    background-position: center;
-    background-size: cover;
-    width: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, var(--bg-darker-2)), rgba(0, 0, 0, var(--bg-darker-2))),
+    url(/pics/bg/supa_bg3.jpg);
+  background-color: rgb(237, 237, 237);
+  background-position: center;
+  background-size: cover;
+  width: 100%;
 }
 
 /* Make horizontal line invisible */
 hr {
-    opacity: 0;
+  opacity: 0;
 }
 
 /* Modify row */
 .row {
-    padding: 0;
-    border: 0;
-    margin: 0;
+  padding: 0;
+  border: 0;
+  margin: 0;
 }
 
 .row * {
-    flex-shrink: 1;
+  flex-shrink: 1;
 }

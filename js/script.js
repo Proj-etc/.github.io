@@ -2,7 +2,6 @@
 var rUrls = document.getElementsByClassName("redirectURL"); // Element for form redirect
 var body_bottom = document.getElementById("body_bottom"); // Element to define body bottom
 var top_button = document.getElementById("top_button"); // Button for page top scrolling
-var collapse_elem1 = document.getElementById("Starter_Guide");
 
 // Check if element is in the viewport
 function isInViewport(elem) {
