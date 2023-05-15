@@ -24,11 +24,16 @@ $(document).ready(function () {
 
   // Show button after scrolling 20px down otherwise hide
   function top_buttonFunc() {
-    if (document.documentElement.scrollTop > 20) {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
       top_button.style.display = "block";
     } else {
       top_button.style.display = "none";
     }
+  }
+
+  function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   }
 
   // Define location of the top_button
