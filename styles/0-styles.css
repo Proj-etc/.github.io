@@ -10,14 +10,17 @@
 @import url(top_button.css);
 
 /* CSS Variables */
-:root{
-    --bg-darker-1: 0.7;
-    --bg-darker-2: 0.9;
+:root {
+  --bg-darker-1: 0.7;
+  --bg-darker-2: 0.9;
 }
 
 /* Modify body element */
 body {
-  background-image: linear-gradient(rgba(0, 0, 0, var(--bg-darker-1)), rgba(0, 0, 0, var(--bg-darker-1))),
+  background-image: linear-gradient(
+      rgba(0, 0, 0, var(--bg-darker-1)),
+      rgba(0, 0, 0, var(--bg-darker-1))
+    ),
     url(/pics/bg/supa_bg2.jpg);
   background-color: rgb(65, 65, 65);
   background-position: center;
@@ -35,7 +38,10 @@ body {
 }
 
 section {
-  background-image: linear-gradient(rgba(0, 0, 0, var(--bg-darker-2)), rgba(0, 0, 0, var(--bg-darker-2))),
+  background-image: linear-gradient(
+      rgba(0, 0, 0, var(--bg-darker-2)),
+      rgba(0, 0, 0, var(--bg-darker-2))
+    ),
     url(/pics/bg/supa_bg3.jpg);
   background-color: rgb(237, 237, 237);
   background-position: center;

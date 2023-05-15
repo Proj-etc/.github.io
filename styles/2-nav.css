@@ -17,6 +17,9 @@ nav.bg-custom {
 
 .nav-pills a,
 .nav-link a {
+  --bs-nav-pills-link-active-bg: rgb(133, 133, 133);
+  --bs-nav-link-hover-color: rgb(133, 133, 133);
+  --bs-nav-link-color: rgb(133, 133, 133);
   color: rgb(133, 133, 133);
   padding: 11px 5px 11px 5px;
   align-self: center;
