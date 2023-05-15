@@ -2,11 +2,6 @@
 var rUrls = document.getElementsByClassName("redirectURL"); // Element for form redirect
 var body_bottom = document.getElementById("body_bottom"); // Element to define body bottom
 var top_button = document.getElementById("top_button"); // Button for page top scrolling
-const nextURL = 'index.htmld';
-const nextTitle = 'My new page title';
-const nextState = { additionalInformation: 'Updated the URL with JS' };
-
-history.pushState(nextState, nextTitle, nextURL);
 
 // Check if element is in the viewport
 function isInViewport(elem) {
