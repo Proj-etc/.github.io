@@ -53,6 +53,7 @@ $(document).ready(function () {
   // Define site content usign domain's query string
   $("#content_placeholder").load("/pages/home.html", function () {
     $("#home").addClass("active");
+    window.history.replaceState({page:"home"},"","");
   });
 
   // Bottom bar
@@ -63,10 +64,7 @@ $(document).ready(function () {
 });
 
 $(window).on("popstate", function (event) {
-  var page = "home";
-  if (window.history.state != null) {
-    page = window.history.state.page;
-  }
+  var page = window.history.state.page;
   $("#content_placeholder").load(
     "/pages/" + page + ".html",
     function (response, status, xhr) {
