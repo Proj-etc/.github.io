@@ -1,0 +1,7 @@
+/* Modify bottom bar */
+
+.bottom_bar {
+  background-color: rgb(51, 51, 51);
+  min-height: 98px;
+  max-height: 98px;
+}

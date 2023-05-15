@@ -1,10 +1,13 @@
 /* import other css */
-@import url(nav_and_footer.css);
-@import url(top_button.css);
+
+@import url(1-texts.css);
+@import url(2-nav.css);
+@import url(2-bottom-bar.css);
+@import url(2-footer.css);
 @import url(accordion.css);
 @import url(dropdown.css);
-@import url(texts.css);
 @import url(media.css);
+@import url(top_button.css);
 
 /* CSS Variables */
 :root{

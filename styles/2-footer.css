@@ -1,0 +1,30 @@
+/* Modify footer bar */
+footer {
+  min-height: 49px;
+  font-size: 0;
+}
+
+footer.navbar-dark {
+  color: rgb(255, 255, 255);
+  font-weight: 900;
+  font-size: 15px;
+}
+
+footer.bg-custom {
+  background-color: rgb(33, 33, 33);
+}
+
+footer .dropdown-menu {
+  width: 250px;
+  padding: 0;
+  margin: 0;
+}
+
+footer .nav-link img {
+  height: 25px;
+  width: 25px;
+}
+
+footer .dropup li {
+  margin: 5px;
+}
