@@ -130,3 +130,48 @@ document.addEventListener("click", async (event) => {
     );
   }
 });
+
+// Load functions
+function loadBestiary() {
+  if (window.history.state.page == "bestiary") {
+    $.ajax({
+      datatype: "json",
+      url: "/svr/bestiary.json",
+      method: "get",
+      success: function (result) {
+        $(result.demons).each(function (i, val) {
+          $("#content_placeholder .row.w-100").append(
+            " <h2>" + val.type + "</h2>."
+          );
+          $("#content_placeholder .row.w-100").append(" <h3>Appearance</h3>.");
+          $("#content_placeholder .row.w-100").append(
+            " <p>" + val.appearance + "</p>."
+          );
+          $("#content_placeholder .row.w-100").append(
+            " <h3>Powers and Abilities</h3>."
+          );
+          $(val.powersabilitiesnames).each(function (k, valk) {
+            $("#content_placeholder .row.w-100").append(
+              " <p>" + valk + "</p>."
+            );
+            $("#content_placeholder .row.w-100").append(
+              " <p>" + val.powersabilitiesdesc[k] + "</p>."
+            );
+          });
+          $("#content_placeholder .row.w-100").append(" <h3>Weaknesses</h3>.");
+          $(val.weaknessesnames).each(function (j, valj) {
+            $("#content_placeholder .row.w-100").append(
+              " <p>" + valj + "</p>."
+            );
+            $("#content_placeholder .row.w-100").append(
+              " <p>" + val.weaknessesdesc[j] + "</p>."
+            );
+          });
+          $("#content_placeholder .row.w-100").append(
+            " <img src='" + val.url + "' alt=''> "
+          );
+        });
+      },
+    });
+  }
+}
