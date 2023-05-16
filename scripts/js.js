@@ -24,7 +24,10 @@ $(document).ready(function () {
 
   // Show button after scrolling 20px down otherwise hide
   function top_buttonFunc() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    if (
+      document.body.scrollTop > 20 ||
+      document.documentElement.scrollTop > 20
+    ) {
       top_button.style.display = "block";
     } else {
       top_button.style.display = "none";
@@ -36,7 +39,7 @@ $(document).ready(function () {
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   }
 
-  $("#top_button").click(function(){
+  $("#top_button").click(function () {
     topFunction();
   });
 
@@ -56,13 +59,15 @@ $(document).ready(function () {
 
   // Load and place page content to the placeholders
   // Navigation bar
-  $("#navbar_placeholder").load("assets/navbar.html");
+  $("#navbar_placeholder").load("assets/1-nav.html");
 
   // Content
   // Define site content usign domain's query string
   $("#content_placeholder").load("/pages/home.html", function () {
     $("#home").addClass("active");
-    window.history.replaceState({page:"home"},"","");
+    window.history.replaceState({ page: "home" }, "", "");
+    // Page title
+    document.title = document.getElementsByTagName("h10")[0].innerHTML.toUpperCase();
   });
 
   // Bottom bar
@@ -98,7 +103,7 @@ document.addEventListener("click", async (event) => {
     // don't ask the server for that resource!
     event.preventDefault();
     var page = event.target.id;
-    if (event.target.classList.contains("home_id")) {
+    if (event.target.classList.contains("home-id")) {
       page = "home";
     }
     $("#content_placeholder").load(
@@ -107,13 +112,19 @@ document.addEventListener("click", async (event) => {
         if (status == "error") {
           $(".nav-link.active").removeClass("active");
           $("#content_placeholder").load("/pages/404.html");
-        }else if(window.history.length == 1 && event.target.classList.contains("home_id")){
+        } else if (
+          window.history.length == 1 &&
+          event.target.classList.contains("home-id")
+        ) {
           $(".nav-link.active").removeClass("active");
           $("#" + page).addClass("active");
         } else {
           $(".nav-link.active").removeClass("active");
           $("#" + page).addClass("active");
-          window.history.pushState({ page: page }, "", "");
+          window.history.pushState({ page: page }, "", "/"+page);
+          // Change page title
+          //document.title = document.title.split("/")[0];
+          //document.title += "/"+document.getElementsByTagName("h10")[0].innerHTML.toUpperCase();
         }
       }
     );
