@@ -65,7 +65,7 @@ $(document).ready(function () {
   // Define site content usign domain's query string
   $("#content_placeholder").load("/pages/home.html", function () {
     $("#home").addClass("active");
-    window.history.replaceState({ page: "home" }, "", "");
+    window.history.replaceState({ page: "home" }, "", "?home");
     // Page title
     document.title = document.getElementsByTagName("h10")[0].innerHTML.toUpperCase();
   });
@@ -121,7 +121,7 @@ document.addEventListener("click", async (event) => {
         } else {
           $(".nav-link.active").removeClass("active");
           $("#" + page).addClass("active");
-          window.history.pushState({ page: page }, "", "/"+page);
+          window.history.pushState({ page: page }, "", "?"+page);
           // Change page title
           //document.title = document.title.split("/")[0];
           //document.title += "/"+document.getElementsByTagName("h10")[0].innerHTML.toUpperCase();
