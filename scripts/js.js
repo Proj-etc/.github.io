@@ -36,6 +36,10 @@ $(document).ready(function () {
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   }
 
+  $("#top_button").click(function(){
+    topFunction();
+  });
+
   // Define location of the top_button
   // If body_bottom is visible in the viewport button is placed 10px on top of the bottom bar
   function body_bottomFunc() {
