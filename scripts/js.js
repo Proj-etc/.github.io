@@ -67,7 +67,9 @@ $(document).ready(function () {
     $("#home").addClass("active");
     window.history.replaceState({ page: "home" }, "", "?home");
     // Page title
-    document.title = document.getElementsByTagName("h10")[0].innerHTML.toUpperCase();
+    document.title = document
+      .getElementsByTagName("h10")[0]
+      .innerHTML.toUpperCase();
   });
 
   // Bottom bar
@@ -78,19 +80,7 @@ $(document).ready(function () {
 });
 
 $(window).on("popstate", function (event) {
-  var page = window.history.state.page;
-  $("#content_placeholder").load(
-    "/pages/" + page + ".html",
-    function (response, status, xhr) {
-      if (status == "error") {
-        $(".nav-link.active").removeClass("active");
-        $("#content_placeholder").load("/pages/404.html");
-      } else {
-        $(".nav-link.active").removeClass("active");
-        $("#" + page).addClass("active");
-      }
-    }
-  );
+  $("#" + window.history.state.page + "")[0].click();
 });
 
 document.addEventListener("click", async (event) => {
@@ -121,11 +111,15 @@ document.addEventListener("click", async (event) => {
         } else {
           $(".nav-link.active").removeClass("active");
           $("#" + page).addClass("active");
-          window.history.pushState({ page: page }, "", "?"+page);
+          if (window.history.state.page != page) {
+            window.history.pushState({ page: page }, "", "?" + page);
+          }
           // Change page title
           //document.title = document.title.split("/")[0];
           //document.title += "/"+document.getElementsByTagName("h10")[0].innerHTML.toUpperCase();
         }
+        // Load bestiary data
+        loadBestiary();
       }
     );
   }
@@ -140,6 +134,10 @@ function loadBestiary() {
       method: "get",
       success: function (result) {
         $(result.demons).each(function (i, val) {
+          var powersabilitiesnames_parse = JSON.parse(val.powersabilitiesnames);
+          var powersabilitiesdesc_parse = JSON.parse(val.powersabilitiesdesc);
+          var weaknessesnames_parse = JSON.parse(val.weaknessesnames);
+          var weaknessesdesc_parse = JSON.parse(val.weaknessesdesc);
           $("#content_placeholder .row.w-100").append(
             " <h2>" + val.type + "</h2>."
           );
@@ -150,21 +148,21 @@ function loadBestiary() {
           $("#content_placeholder .row.w-100").append(
             " <h3>Powers and Abilities</h3>."
           );
-          $(val.powersabilitiesnames).each(function (k, valk) {
+          $(powersabilitiesnames_parse).each(function (k, valk) {
             $("#content_placeholder .row.w-100").append(
               " <p>" + valk + "</p>."
             );
             $("#content_placeholder .row.w-100").append(
-              " <p>" + val.powersabilitiesdesc[k] + "</p>."
+              " <p>" + powersabilitiesdesc_parse[k] + "</p>."
             );
           });
           $("#content_placeholder .row.w-100").append(" <h3>Weaknesses</h3>.");
-          $(val.weaknessesnames).each(function (j, valj) {
+          $(weaknessesnames_parse).each(function (j, valj) {
             $("#content_placeholder .row.w-100").append(
               " <p>" + valj + "</p>."
             );
             $("#content_placeholder .row.w-100").append(
-              " <p>" + val.weaknessesdesc[j] + "</p>."
+              " <p>" + weaknessesdesc_parse[j] + "</p>."
             );
           });
           $("#content_placeholder .row.w-100").append(

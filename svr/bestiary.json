@@ -1,0 +1,50 @@
+{
+  "routes": [
+    {
+      "id": 1,
+      "route": "demons"
+    }
+  ],
+  "demons": [
+    {
+      "type": "White-eyed Demons",
+      "url": "/pics/eyes/white.png",
+      "appearance": "It is unknown how a white-eyed demon's true form looked like; however, as they walked the Earth, they manifested as a cloud of black smoke. As they possessed human vessels, it came to no noticeable change besides that their eye color changed to white. Shortly before Dean's soul was supposed to go to Hell, he was able to see Lilith's true face and describes it as horrible.",
+      "powersabilitiesnames": "[\"Biokinesis\"]",
+      "powersabilitiesdesc": "[\"Alastair directed a psychic attack on Sam and Dean simultaneously by raising his hand at them\",\" causing them to grip their chests and fall down, implying that he was attacking their hearts or lungs. With just a flick of her fingers, Lilith was able to cause cuts to appear on Dean's body.\"]",
+      "weaknessesnames": "[\"Holy water\",\"Salt\"]",
+      "weaknessesdesc": "[\"Holy water caused pain to Alastair, but he was highly resistant to it and it did not cause him any scars like common demons and did not seem to be permanent. Lilith however was stated to be immune to holy water, due to being the first demon.\",\"Salt caused pain to Alastair, but, like holy water, he proved to be resistant to the harmful effects of salt in his throat.\"]",
+      "id": 4
+    },
+    {
+      "type": "Yellow-eyed Demons",
+      "url": "/pics/eyes/yellow.png",
+      "appearance": "The Princes of Hell were the first generation of demons created by Lucifer himself after the creation of Lilith. Lucifer created them himself before the sinking of Atlantis. In the demonic hierarchy of Hell, they ranked among the highest, eclipsed only by the original demon Lilith. They were originally generals of Lucifer's demonic armies, but have since become separated from Hell, opting instead to hide out on Earth. The one known exception to this was Azazel, who remained loyal to Lucifer until his death. After a promise to rule at Lucifer's side, Dagon briefly served him once more as the protector of his son. Following the deaths of Azazel, Ramiel, and Dagon, Asmodeus was the only remaining Prince of Hell and became the King of Hell. Following Asmodeus' death at the hands of the archangel Gabriel, the Princes of Hell were left extinct.",
+      "powersabilitiesnames": "[\"Biokinesis\",\"Telekinesis\",\"Pyrokinesis\"]",
+      "powersabilitiesdesc": "[\"Azazel demonstrated the ability to physically injure humans, even inducing fatal internal bleeding with a mere glare. One of the omens of Azazel's arrival also included mass cattle deaths.\",\"Azazel could move people and objects using only his mind. He was very skilled with this ability, able to use it on multiple targets at once, restraining them so they couldn't even cry out for help, and throwing grown men considerable distances, by flicking his wrist. He was able to keep Mary pinned to the ceiling, without even being in the room. Dagon was similarly able to fling around several hunters effortlessly. Ramiel was telekinetic as well as seen with him closing the doors of his house with a wave of his hand, but appeared to prefer physical combat to use telekinesis to fling his enemies around. Asmodeus was able to casually pull a demon to him with just a hand gesture.\",\"Azazel could generate and manipulate fire. His power over fire was extensive enough that he could render entire buildings ablaze in minutes or even seconds.\"]",
+      "weaknessesnames": "[\"Devil's Trap\",\"Holy Fire (possibly)\",\"The Colt\",\"Lance of Michael\"]",
+      "weaknessesdesc": "[\"A devil's trap was able to keep Azazel out. However, the devil's trap bullets had no effect on Ramiel like the regular devil's trap.\",\"It was used against Ramiel to trap him before he broke free by using the Lance of Michael. However, even before breaking free, Ramiel was more amused than anything to have holy fire used against him.\",\"This gun was able to kill one.\",\"The Lance was able to kill one.\"]",
+      "id": 5
+    },
+    {
+      "type": "Black-eyed Demons",
+      "url": "/pics/eyes/black.png",
+      "appearance": "These are the masses of mindless drones, because they are just soldiers, thugs, henchmen and minions.The most common and standard class of demons on the show, black-eyed demons possess only basic powers, such as possession, super strength and telekinesis. Effective defenses against these demons include holy water, salt, iron, a Devil's Trap, etc. Stronger black-eyed demons, such as Meg or the Seven Deadly Sins, have more resistance such as not being barred from entering hallowed ground and one demon, Astaroth, is shown to have the ability of causing internal bleeding and extensive magical knowledge, such as when she recites a ritual to exorcise Ruby from her body. Astaroth was also able to stop a bullet shot from the Colt in mid-air. Although the Knights of Hell are black eyed demons, they are far more powerful and possess much greater abilities.",
+      "powersabilitiesnames": "[\" possession\",\"super strength\",\"telekinesis\"]",
+      "powersabilitiesdesc": "[\"\"]",
+      "weaknessesnames": "[\" holy water\",\"salt\",\"iron\",\"a Devil's Trap\"]",
+      "weaknessesdesc": "[\"\"]",
+      "id": 6
+    },
+    {
+      "type": "Crossroad Demon",
+      "url": "/pics/eyes/red.png",
+      "appearance": "Crossroad Demons are demons tasked with \"buying\" souls for Hell through deals with humans. These deals consist of the demon granting the human's wish in exchange for ownership over that person's soul, resulting in the person dying and going to Hell to be transformed into a demon upon death. Crossroad demons are named as such because they, in particular, can be summoned at crossroads by humans seeking to make deals.In 2020, the new Queen Rowena MacLeod ordered that no more deals are to be made, effectively putting the Crossroad Demons out of a job.",
+      "powersabilitiesnames": "[\"Soul Reading\",\"Teleportation\",\"Immortality\",\"Super Stamina\"]",
+      "powersabilitiesdesc": "[\"Some crossroad demons, can assess the condition of one's soul.\",\"They have the ability to teleport, and commonly appear when summoned to make deals.\",\"As demons, they can live forever unless killed.\",\"As demons, they don't require food, water, sleep or oxygen to sustain themselves.\"]",
+      "weaknessesnames": "[\"Devil's Trap\",\"Hex Bags\",\"Higher Demons\",\"Holy Water\"]",
+      "weaknessesdesc": "[\"A Devil's Trap will hold a Crossroad Demon for an indefinite amount of time.\",\"Hex bags can cause extreme pain to a Crossroad Demon.\",\"Higher Demons such as Princes of Hell and Knights of Hell can effortessly overpower a crossroad demon, regardless of their status.\",\"Holy water affects Crossroad Demons.\"]",
+      "id": 7
+    }
+  ]
+}
