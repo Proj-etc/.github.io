@@ -49,7 +49,7 @@ $(document).ready(function () {
       top_button.style.top = body_bottom.offsetTop - 35 + "px";
     } else {
       top_button.style.position = "fixed";
-      top_button.style.bottom = "10px";
+      top_button.style.bottom = "15px";
       top_button.style.top = "auto";
     }
   }
