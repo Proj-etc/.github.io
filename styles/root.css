@@ -1,0 +1,57 @@
+/* CSS Variables */
+:root {
+  --bg-darker-1: 0.7;
+  --bg-darker-2: 0.9;
+  --navigation-height: 50px;
+  --top-height: 0px;
+  --bottom-height: 0px;
+  --footer-height: 50px;
+}
+/* Body element */
+body {
+  background: linear-gradient(
+      rgba(0, 0, 0, var(--bg-darker-1)),
+      rgba(0, 0, 0, var(--bg-darker-1))
+    ),
+    url(""), rgba(65, 65, 65, 1);
+  background-position: center;
+  background-size: cover;
+  min-width: 330px;
+}
+/* Content area */
+#content {
+  border-right: 1.5px double rgb(155, 155, 155);
+  border-left: 1.5px double rgb(155, 155, 155);
+  background: rgba(237, 237, 237, 0.05);
+  min-height: calc(
+    120vh - var(--navigation-height) - var(--top-height) -
+      var(--bottom-height) - var(--footer-height)
+  );
+  max-width: 1920px;
+  padding: 0;
+}
+
+#contentPlaceholder {
+  background-image: linear-gradient(
+      rgba(0, 0, 0, var(--bg-darker-2)),
+      rgba(0, 0, 0, var(--bg-darker-2))
+    ),
+    url(""), rgba(237, 237, 237, 1);
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+}
+/* Make horizontal line invisible */
+hr.space {
+  opacity: 0;
+}
+/* Row */
+.row {
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
+
+.row * {
+  flex-shrink: 1;
+}

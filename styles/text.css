@@ -1,0 +1,104 @@
+/* Headings: 1 - 7 */
+/* Main heading */
+h1 {
+  border-bottom: 2px double rgba(171, 150, 111, 1);
+  border-top: 2px double rgba(171, 150, 111, 1);
+  color: rgba(255, 255, 255, 1);
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+/* Secondary heading */
+h2 {
+  border-bottom: 2px double rgba(171, 150, 111, 1);
+  border-top: 2px double rgba(171, 150, 111, 1);
+  color: rgba(255, 255, 255, 1);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  padding-left: 2.5rem !important;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: left;
+}
+/* Card heading */
+h3 {
+  border-bottom: 2.5px ridge rgba(182, 149, 87, 0.5);
+  border-top: 5px ridge rgba(182, 149, 87, 0.5);
+  color: rgba(255, 255, 255, 1);
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+h3 a {
+  color: rgba(255, 255, 255, 1);
+  text-decoration: none;
+  cursor: pointer;
+}
+/* Link text: navigation and footer bars */
+h4 {
+  color: rgba(255, 255, 255, 1);
+  font-size: 1rem;
+}
+h4 a {
+  text-decoration: none;
+  cursor: pointer;
+}
+/* Carousel heading */
+h5 {
+  border: 5px double rgba(171, 150, 111, 1);
+  color: rgba(255, 255, 255, 1);
+  border-bottom-width: 0px;
+  border-top-width: 0px;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+}
+/* Link text: other */
+/* Link text: link */
+h6 {
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+}
+h6 a {
+  text-decoration: none;
+  cursor: pointer;
+}
+/* Link text: other hover */
+h6 a:hover {
+  text-decoration: underline solid rgba(171, 150, 111, 1);
+  color: rgba(171, 150, 111, 1);
+}
+/* link text: other if inside carousel */
+.carousel-inner h6 {
+  border: 5px double rgba(171, 150, 111, 1);
+  border-top-width: 0;
+  margin: 0;
+}
+/**/
+h7 {
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  /* Other text: paragraphs etc*/
+  /* Paragraph */
+  p {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+}
+/* Label */
+label {
+    color: rgba(31, 31, 31, 0.75);
+}

@@ -1,0 +1,29 @@
+{
+  "navigation": [
+    {
+      "key": 1,
+      "id": "home",
+      "align": "left"
+    },
+    {
+      "key": 2,
+      "id": "link1",
+      "align": "left"
+    },
+    {
+      "key": 3,
+      "id": "link2",
+      "align": "left"
+    },
+    {
+      "key": 4,
+      "id": "link3",
+      "align": "left"
+    },
+    {
+      "key": 5,
+      "id": "link4",
+      "align": "right"
+    }
+  ]
+}

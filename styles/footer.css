@@ -1,0 +1,15 @@
+/* Footer bar styles */
+/* Basic Footer bar styles */
+.footer {
+  background: rgba(33, 33, 33, 1) !important;
+  color: rgba(255, 255, 255, 1);
+  text-transform: capitalize;
+  min-height: var(--footer-height);
+  max-height: var(--footer-height);
+  font-weight: 900;
+  font-size: 15;
+}
+
+.footer div p {
+    margin: 0;
+}
