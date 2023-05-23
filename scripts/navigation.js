@@ -2,9 +2,9 @@
 $(document).ready(function () {
     $.ajax({
         type: "get",
-        url: "/svr/links.json",
+        url: "https://proj-etc-db.up.railway.app/api/v1/links/navigation",
         success: function (response) {
-            $(response.navigation).each(function (i, val) { 
+            $(response).each(function (i, val) { 
                 var navItem = document.createElement("li");
                 navItem.className = "nav-item";
                 var navLink = document.createElement("a");

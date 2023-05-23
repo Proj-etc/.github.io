@@ -17,32 +17,26 @@
           width: 575,
           buttons: {
             Add: function () {
-              var powersabilitiesnames__ = $("#powersabilitiesnames_")
-                .val()
-                .split(";");
-              var powersabilitiesdesc__ = $("#powersabilitiesdesc_")
-                .val()
-                .split(";");
-              var weaknessesnames__ = $("#weaknessesnames_").val().split(";");
-              var weaknessesdesc__ = $("#weaknessesdesc_").val().split(";");
-              $.ajax({
-                url: "http://localhost:3000/" + $("#routes_").val(),
-                method: "post",
-                data: {
-                  type: $("#type_").val(),
-                  url: $("#url_").val(),
-                  appearance: $("#appearance_").val(),
-                  powersabilitiesnames: JSON.stringify(powersabilitiesnames__),
-                  powersabilitiesdesc: JSON.stringify(powersabilitiesdesc__),
-                  weaknessesnames: JSON.stringify(weaknessesnames__),
-                  weaknessesdesc: JSON.stringify(weaknessesdesc__),
-                },
-                success: function () {
-                  $("#add-form").trigger("reset");
-                  $("#dialog").dialog("close");
-                  $("#fetch-data").click();
-                },
-              });
+              var src =
+                "https://proj-etc-db.up.railway.app/api/v1/links/" +
+                $("#routes_").val() +
+                "/" +
+                $("#id_").val() +
+                "." +
+                $("#align_").val();
+              if ($("#id_").val() == "") {
+                alert("You need to give id/link name!");
+              } else {
+                $.ajax({
+                  url: src,
+                  method: "POST",
+                  success: function () {
+                    $("#add-form").trigger("reset");
+                    $("#dialog").dialog("close");
+                    $("#fetch-data").click();
+                  },
+                });
+              }
             },
             Cancel: function () {
               $("#add-form").trigger("reset");
@@ -60,81 +54,99 @@
         });
         $("#routes").empty();
         $("#routes").append(new Option("No route selected", 0));
-        $("#routes").append(new Option("links", "links"));
-        $.ajax({
-          method: "GET",
-          url: "http://localhost:3000/routes",
-          success: function (result) {
-            $.each(result, function (i, val) {
-              $("#routes").append(new Option(val.route, val.route));
-              $("#routes_").append(new Option(val.route, val.route));
-            });
-          },
-        });
+        $("#routes").append(new Option("navigation", "navigation"));
+        $("#routes_").append(new Option("navigation", "navigation"));
         $("#fetch-data").click(function () {
           $("#data tbody").empty();
           if ($("#routes").val() != 0) {
-            var src = "https://proj-etc-db.up.railway.app/api/v1/" + $("#routes").val() + "/";
+            var src =
+              "https://proj-etc-db.up.railway.app/api/v1/links/" +
+              $("#routes").val() +
+              "/";
             var arr = [];
             if ($("#type").val() != "") {
               arr.push("type=" + $("#type").val());
             }
             src = src + arr.join(".");
-            $.ajax({
-              method: "GET",
-              url: src,
-              dataType: "application/json",
-              crossDomain: true,
-              success: function (result) {
-                $.each(result, function (i, val) {
-                  $("#data tbody").append(
-                    "<tr><td>" +
-                      val.type +
-                      "</td><td>" +
-                      val.url +
-                      "</td><td>" +
-                      val.appearance +
-                      "</td><td style='text-align:left;'><ul id='pa_" +
-                      val.id +
-                      "' style='padding-left:10px;'></ul></td><td style='text-align:left;'><ul id='w_" +
-                      val.id +
-                      "' style='padding-left:10px;'></ul></td><td><button id='del_" +
-                      val.id +
-                      "'>Delete</button></td></tr>"
-                  );
-                  var powersabilitiesnames_parse = JSON.parse(
-                    val.powersabilitiesnames
-                  );
-                  var powersabilitiesdesc_parse = JSON.parse(
-                    val.powersabilitiesdesc
-                  );
-                  var weaknessesnames_parse = JSON.parse(val.weaknessesnames);
-                  var weaknessesdesc_parse = JSON.parse(val.weaknessesdesc);
-                  $(powersabilitiesnames_parse).each(function (j, jval) {
-                    $("#pa_" + val.id).append("<li>" + jval + "</li>");
-                    $("#pa_" + val.id).append(
-                      "<ul><li>" + powersabilitiesdesc_parse[j] + "</li><ul>"
-                    );
-                  });
-                  $(weaknessesnames_parse).each(function (j, jval) {
-                    $("#w_" + val.id).append("<li>" + jval + "</li>");
-                    $("#w_" + val.id).append(
-                      "<ul><li>" + weaknessesdesc_parse[j] + "</li><ul>"
-                    );
-                  });
+            $.getJSON(src, function (res) {
+              $.each(res, function (i, val) {
+                $("#data tbody").append(
+                  "<tr><td>" +
+                    val.key +
+                    "</td><td>" +
+                    val.id +
+                    "</td><td>" +
+                    val.align +
+                    "</td><td><button id='upd_" +
+                    val.key +
+                    "'>Update</button></td></td><td><button id='del_" +
+                    val.key +
+                    "'>Delete</button></td></tr>"
+                );
+              });
+              $("[id*='del_']").click(function () {
+                var id = this.id.split("_")[1];
+                $.ajax({
+                  method: "DELETE",
+                  url:
+                    "https://proj-etc-db.up.railway.app/api/v1/links/" +
+                    $("#routes").val() +
+                    "/key:" +
+                    id,
+                  success: function () {
+                    $("#fetch-data").click();
+                  },
                 });
-                $("[id*='del_']").click(function () {
-                  var id = this.id.split("_")[1];
-                  $.ajax({
-                    method: "DELETE",
-                    url:
-                      "http://localhost:3000/" + $("#routes").val() + "/" + id,
-                    success: function () {
-                      $("#fetch-data").click();
+              });
+              $("[id*='upd_']").click(function () {
+                var id = this.id.split("_")[1];
+                var src1 =
+                  "https://proj-etc-db.up.railway.app/api/v1/links/" +
+                  $("#routes").val() +
+                  "/key:" +
+                  id;
+                $.getJSON({
+                  method: "GET",
+                  url: src1,
+                  success: function (res) {
+                    $("#id_").val(res.id);
+                    $("#align_").val(res.align);
+                  },
+                });
+                $("#dialog")
+                  .dialog("option", {
+                    title: "Change link: ",
+                    buttons: {
+                      Save: function () {
+                        if ($("#id_").val() == "") {
+                          alert("ID / link name can not be empty!");
+                        } else {
+                          var src2 =
+                            "https://proj-etc-db.up.railway.app/api/v1/links/" +
+                            $("#routes").val() +
+                            "/" + id +"."+$("#id_").val()+"."+$("#align_").val();
+                          $.ajax({
+                            url: src2,
+                            method: "PUT",
+                            success: function () {
+                              $("#data").trigger("reset");
+                              $("#dialog").dialog("close");
+                              $("#fetch-data").click();
+                            },
+                            error: function () {
+                              alert("error");
+                            },
+                          });
+                        }
+                      },
+                      Cancel: function () {
+                        $("#data").trigger("reset");
+                        $(this).dialog("close");
+                      },
                     },
-                  });
-                });
-              },
+                  })
+                  .dialog("open");
+              });
             });
           } else {
             $("#data tbody").append(
@@ -207,7 +219,6 @@
       <table id="data">
         <thead>
           <tr>
-            <th>ID</th>
             <th>key</th>
             <th>id</th>
             <th>align</th>
@@ -236,44 +247,21 @@
       </table>
       <div id="dialog">
         <form id="add-form">
+          <label for="routes_">Route/Collection of the database</label>
           <select id="routes_"></select>
-          <input type="text" id="type_" placeholder="Type" tabindex="-1" />
+          <hr />
           <input
             type="text"
-            id="url_"
-            placeholder="Picture url"
+            id="id_"
+            placeholder="id same as link name"
             tabindex="-1"
           />
-          <textarea
-            id="appearance_"
-            placeholder="Appearance"
-            tabindex="-1"
-            rows="5"
-          ></textarea>
-          <textarea
-            id="powersabilitiesnames_"
-            placeholder="Powers and abilities names&#10;Use ';' seperate&#10;'Telekinesis;Biokinesis'"
-            tabindex="-1"
-            rows="5"
-          ></textarea>
-          <textarea
-            id="powersabilitiesdesc_"
-            placeholder="Powers and abilities desc&#10;Use ';' seperate&#10;'Telekinesis;Biokinesis'"
-            tabindex="-1"
-            rows="5"
-          ></textarea>
-          <textarea
-            id="weaknessesnames_"
-            placeholder="Weaknesses names&#10;Use ';' seperate&#10;'Telekinesis;Biokinesis'"
-            tabindex="-1"
-            rows="5"
-          ></textarea>
-          <textarea
-            id="weaknessesdesc_"
-            placeholder="Weaknesses desc&#10;Use ';' seperate&#10;'Telekinesis;Biokinesis'"
-            tabindex="-1"
-            rows="5"
-          ></textarea>
+          <hr />
+          <label for="align_">Align</label>
+          <select id="align_">
+            <option value="left">Left</option>
+            <option value="right">Right</option>
+          </select>
         </form>
       </div>
     </main>
