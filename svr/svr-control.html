@@ -18,11 +18,11 @@
           buttons: {
             Add: function () {
               var src =
-                "https://proj-etc-db.up.railway.app/api/v1/links/" +
+                "https://proj-etc-db.up.railway.app/api/v1/"+$("#db").val()+"/" +
                 $("#routes_").val() +
-                "/" +
+                "/id:" +
                 $("#id_").val() +
-                "." +
+                ".align:" +
                 $("#align_").val();
               if ($("#id_").val() == "") {
                 alert("You need to give id/link name!");
@@ -52,20 +52,26 @@
           );
           $("#dialog").dialog("open");
         });
+        $("#db").empty();
+        $("#db").append(new Option("No database selected", 0));
+        $("#db").append(new Option("links", "links", true, true));
+        $("#db_").append(new Option("No database selected", 0));
+        $("#db_").append(new Option("links", "links", true, true));
         $("#routes").empty();
         $("#routes").append(new Option("No route selected", 0));
-        $("#routes").append(new Option("navigation", "navigation"));
-        $("#routes_").append(new Option("navigation", "navigation"));
+        $("#routes").append(new Option("navigation", "navigation", true, true));
+        $("#routes_").append(new Option("No route selected", 0));
+        $("#routes_").append(new Option("navigation", "navigation", true, true));
         $("#fetch-data").click(function () {
           $("#data tbody").empty();
           if ($("#routes").val() != 0) {
             var src =
-              "https://proj-etc-db.up.railway.app/api/v1/links/" +
+              "https://proj-etc-db.up.railway.app/api/v1/"+$("#db").val()+"/" +
               $("#routes").val() +
               "/";
             var arr = [];
             if ($("#type").val() != "") {
-              arr.push("type=" + $("#type").val());
+              arr.push("id:" + $("#type").val());
             }
             src = src + arr.join(".");
             $.getJSON(src, function (res) {
@@ -89,7 +95,7 @@
                 $.ajax({
                   method: "DELETE",
                   url:
-                    "https://proj-etc-db.up.railway.app/api/v1/links/" +
+                    "https://proj-etc-db.up.railway.app/api/v1/"+$("#db").val()+"/" +
                     $("#routes").val() +
                     "/key:" +
                     id,
@@ -101,7 +107,7 @@
               $("[id*='upd_']").click(function () {
                 var id = this.id.split("_")[1];
                 var src1 =
-                  "https://proj-etc-db.up.railway.app/api/v1/links/" +
+                  "https://proj-etc-db.up.railway.app/api/v1/"+$("#db").val()+"/" +
                   $("#routes").val() +
                   "/key:" +
                   id;
@@ -109,8 +115,8 @@
                   method: "GET",
                   url: src1,
                   success: function (res) {
-                    $("#id_").val(res.id);
-                    $("#align_").val(res.align);
+                    $("#id_").val(res[0].id);
+                    $("#align_").val(res[0].align);
                   },
                 });
                 $("#dialog")
@@ -121,10 +127,7 @@
                         if ($("#id_").val() == "") {
                           alert("ID / link name can not be empty!");
                         } else {
-                          var src2 =
-                            "https://proj-etc-db.up.railway.app/api/v1/links/" +
-                            $("#routes").val() +
-                            "/" + id +"."+$("#id_").val()+"."+$("#align_").val();
+                          var src2 = src1 +".id:"+$("#id_").val()+".align:"+$("#align_").val();
                           $.ajax({
                             url: src2,
                             method: "PUT",
@@ -230,6 +233,7 @@
         <thead>
           <tr>
             <th colspan="3" style="text-align: right">
+              <select id="db"></select>
               <select id="routes"></select>
               <input
                 type="text"
@@ -247,6 +251,9 @@
       </table>
       <div id="dialog">
         <form id="add-form">
+          <label for="db_">Database</label>
+          <select id="db_"></select>
+          <hr />
           <label for="routes_">Route/Collection of the database</label>
           <select id="routes_"></select>
           <hr />
