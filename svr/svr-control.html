@@ -19,17 +19,17 @@
             Add: function () {
               var src =
                 "https://proj-etc-db.up.railway.app/api/v1/"+$("#db").val()+"/" +
-                $("#routes_").val() +
-                "/id:" +
-                $("#id_").val() +
-                ".align:" +
-                $("#align_").val();
+                $("#routes_").val();
               if ($("#id_").val() == "") {
                 alert("You need to give id/link name!");
               } else {
                 $.ajax({
                   url: src,
                   method: "POST",
+                  data: {
+                    id: $("#id_").val(),
+                    align: $("#align_").val(),
+                  },
                   success: function () {
                     $("#add-form").trigger("reset");
                     $("#dialog").dialog("close");

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<meta charset="UTF-8" />
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link
+      href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $.ajax({
+            method: "POST",
+            url: "https://proj-etc-db.up.railway.app/api/v1/link/navigation",
+            data: {
+                id: "help",
+                align: "right"
+            }
+        });
+      });
+    </script>
+    <style>
+      input::placeholder,
+      textarea::placeholder {
+        text-align: center;
+      }
+      input:focus::placeholder,
+      textarea:focus::placeholder {
+        color: transparent;
+      }
+      form {
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        align-items: center;
+        width: 100%;
+        flex-direction: column;
+      }
+      input,
+      textarea {
+        width: 100%;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      p,
+      option {
+        text-align: center;
+      }
+      table,
+      tr,
+      th,
+      td {
+        border: 1px solid black;
+        border-spacing: 0;
+        padding: 5px;
+      }
+      th,
+      td {
+        align-items: center;
+        text-align: center;
+        padding: 5px 10px;
+      }
+      td {
+        max-width: 200px;
+      }
+      main {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        max-width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Site database control</h2>
+    <main>
+      <table id="data">
+        <thead>
+          <tr>
+            <th>key</th>
+            <th>id</th>
+            <th>align</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+        <thead>
+          <tr>
+            <th colspan="3" style="text-align: right">
+              <select id="db"></select>
+              <select id="routes"></select>
+              <input
+                type="text"
+                id="type"
+                placeholder="Type"
+                style="width: min-content"
+              />
+              <button id="fetch-data">Fetch data from server</button>
+            </th>
+            <th colspan="4" style="text-align: right">
+              <button id="add-data">Add data to the server</button>
+            </th>
+          </tr>
+        </thead>
+      </table>
+      <div id="dialog">
+        <form id="add-form">
+          <label for="db_">Database</label>
+          <select id="db_"></select>
+          <hr />
+          <label for="routes_">Route/Collection of the database</label>
+          <select id="routes_"></select>
+          <hr />
+          <input
+            type="text"
+            id="id_"
+            placeholder="id same as link name"
+            tabindex="-1"
+          />
+          <hr />
+          <label for="align_">Align</label>
+          <select id="align_">
+            <option value="left">Left</option>
+            <option value="right">Right</option>
+          </select>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
