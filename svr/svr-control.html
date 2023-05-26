@@ -26,17 +26,17 @@
                 alert("You need to give id/link name!");
               } else {
                 $.ajax({
+                  type: "POST",
                   url: src,
-                  method: "POST",
-                  dataType: "json",
                   data: JSON.stringify({
-                    "status": "",
-                    "key": "",
-                    "id": $("#id_").val(),
-                    "align": $("#align_").val(),
+                    status: "",
+                    key: "",
+                    id: $("#id_").val(),
+                    align: $("#align_").val(),
                   }),
-                  contentType: "applicatin/json; charset=UTF-8",
-                  success: function () {
+                  dataType: "json",
+                  contentType: "application/json",
+                  success: function (res) {
                     $("#add-form").trigger("reset");
                     $("#dialog").dialog("close");
                     $("#fetch-data").click();
@@ -78,15 +78,17 @@
               $("#db").val() +
               "/" +
               $("#routes").val();
-            var key = "";
-            if ($("#type").val() != "") {
-              key = $("#type").val();
-            } else {
-              ("");
-            }
-            $.getJSON(
-              src,
-              function (res) {
+            $.ajax({
+              type: "GET",
+              url: src,
+              headers: {
+                JSONkey: "",
+                JSONid: "",
+                JSONalign: "",
+              },
+              dataType: "json",
+              contentType: "application/json",
+              success: function (res) {
                 $.each(res, function (i, val) {
                   $("#data tbody").append(
                     "<tr><td>" +
@@ -97,52 +99,46 @@
                       val.align +
                       "</td><td><button id='upd_" +
                       val.key +
-                      "' disabled>Update</button></td></td><td><button id='del_" +
+                      "'>Update</button></td></td><td><button id='del_" +
                       val.key +
-                      "' disabled>Delete</button></td></tr>"
+                      "'>Delete</button></td></tr>"
                   );
                 });
-                /*$("[id*='del_']").click(function () {
+                $("[id*='del_']").click(function () {
                   var id = this.id.split("_")[1];
                   $.ajax({
-                    url:
-                      "https://proj-etc-db.up.railway.app/api/v1/" +
-                      $("#db").val() +
-                      "/" +
-                      $("#routes").val(),
                     type: "DELETE",
+                    url: src,
                     data: JSON.stringify({
                       status: "",
                       key: id,
                       id: "",
                       align: "",
                     }),
-                    contentType: "applicatin/json",
-                    success: function () {
+                    dataType: "json",
+                    contentType: "application/json",
+                    success: function (res) {
                       $("#fetch-data").click();
                     },
                   });
-                });*/
-                /*$("[id*='upd_']").click(function () {
+                });
+                $("[id*='upd_']").click(function () {
                   var id = this.id.split("_")[1];
-                  var src1 =
-                    "https://proj-etc-db.up.railway.app/api/v1/" +
-                    $("#db").val() +
-                    "/" +
-                    $("#routes").val();
-                  $.getJSON(
-                    src1,
-                    {
-                      "status": "",
-                      "key": id,
-                      "id": "",
-                      "align": "",
+                  $.ajax({
+                    type: "GET",
+                    url: src,
+                    headers: {
+                      JSONkey: id,
+                      JSONid: "",
+                      JSONalign: "",
                     },
-                    function (res) {
+                    dataType: "json",
+                    contentType: "application/json",
+                    success: function (res) {
                       $("#id_").val(res[0].id);
                       $("#align_").val(res[0].align);
-                    }
-                  );
+                    },
+                  });
                   $("#dialog")
                     .dialog("option", {
                       title: "Change link: ",
@@ -152,36 +148,34 @@
                             alert("ID / link name can not be empty!");
                           } else {
                             $.ajax({
-                              url: src1,
-                              method: "PUT",
+                              type: "PUT",
+                              url: src,
                               data: JSON.stringify({
-                                "status": "",
-                                "key": id,
-                                "id": $("#id_").val(),
-                                "align": $("#align_").val(),
+                                status: "",
+                                key: id,
+                                id: $("#id_").val(),
+                                align: $("#align_").val(),
                               }),
-                              contentType: "applicatin/json; charset=UTF-8",
-                              success: function () {
-                                $("#data").trigger("reset");
+                              dataType: "json",
+                              contentType: "application/json",
+                              success: function (res) {
+                                $("#add-form").trigger("reset");
                                 $("#dialog").dialog("close");
                                 $("#fetch-data").click();
-                              },
-                              error: function () {
-                                alert("error");
-                              },
+                              }
                             });
                           }
                         },
                         Cancel: function () {
-                          $("#data").trigger("reset");
+                          $("#add-form").trigger("reset");
                           $(this).dialog("close");
                         },
                       },
                     })
                     .dialog("open");
-                });*/
-              }
-            );
+                });
+              },
+            });
           } else {
             $("#data tbody").append(
               "<tr><td colspan='7'><h3>!ERROR!<br><br>Please select route before search</h3></td></tr>"
@@ -209,6 +203,7 @@
       }
       input,
       textarea {
+        text-align: center;
         width: 100%;
       }
       h1,
@@ -269,7 +264,7 @@
               <button id="fetch-data">Fetch data from server</button>
             </th>
             <th colspan="4" style="text-align: right">
-              <button id="add-data" disabled>Add data to the server</button>
+              <button id="add-data">Add data to the server</button>
             </th>
           </tr>
         </thead>
