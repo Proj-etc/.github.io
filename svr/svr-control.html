@@ -76,100 +76,111 @@
               $("#db").val() +
               "/" +
               $("#routes").val();
-            $.getJSON(src, function (res) {
-              $.each(res, function (i, val) {
-                $("#data tbody").append(
-                  "<tr><td>" +
-                    val.key +
-                    "</td><td>" +
-                    val.id +
-                    "</td><td>" +
-                    val.align +
-                    "</td><td><button id='upd_" +
-                    val.key +
-                    "'>Update</button></td></td><td><button id='del_" +
-                    val.key +
-                    "'>Delete</button></td></tr>"
-                );
-              });
-              $("[id*='del_']").click(function () {
-                var id = this.id.split("_")[1];
-                $.ajax({
-                  method: "DELETE",
-                  url:
+            var key = ""
+            if ($("#type").val() != "") {key = $("#type").val()} else {""};
+            $.getJSON(
+              src,
+              {
+                status: "",
+                key: key,
+                id: "",
+                align: "",
+              },
+              function (res) {
+                $.each(res, function (i, val) {
+                  $("#data tbody").append(
+                    "<tr><td>" +
+                      val.key +
+                      "</td><td>" +
+                      val.id +
+                      "</td><td>" +
+                      val.align +
+                      "</td><td><button id='upd_" +
+                      val.key +
+                      "'>Update</button></td></td><td><button id='del_" +
+                      val.key +
+                      "'>Delete</button></td></tr>"
+                  );
+                });
+                $("[id*='del_']").click(function () {
+                  var id = this.id.split("_")[1];
+                  $.ajax({
+                    method: "DELETE",
+                    url:
+                      "https://proj-etc-db.up.railway.app/api/v1/" +
+                      $("#db").val() +
+                      "/" +
+                      $("#routes").val(),
+                    data: {
+                      status: "",
+                      key: id,
+                      id: "",
+                      align: "",
+                    },
+                    success: function () {
+                      $("#fetch-data").click();
+                    },
+                  });
+                });
+                $("[id*='upd_']").click(function () {
+                  var id = this.id.split("_")[1];
+                  var src1 =
                     "https://proj-etc-db.up.railway.app/api/v1/" +
                     $("#db").val() +
                     "/" +
-                    $("#routes").val(),
-                  data: {
-                    status: "",
-                    key: id,
-                    id: "",
-                    align: "",
-                  },
-                  success: function () {
-                    $("#fetch-data").click();
-                  },
-                });
-              });
-              $("[id*='upd_']").click(function () {
-                var id = this.id.split("_")[1];
-                var src1 =
-                  "https://proj-etc-db.up.railway.app/api/v1/" +
-                  $("#db").val() +
-                  "/" +
-                  $("#routes").val();
-                $.getJSON({
-                  method: "GET",
-                  url: src1,
-                  data: {
-                    status: "",
-                    key: id,
-                    id: "",
-                    align: "",
-                  },
-                  success: function (res) {
-                    $("#id_").val(res[0].id);
-                    $("#align_").val(res[0].align);
-                  },
-                });
-                $("#dialog")
-                  .dialog("option", {
-                    title: "Change link: ",
-                    buttons: {
-                      Save: function () {
-                        if ($("#id_").val() == "") {
-                          alert("ID / link name can not be empty!");
-                        } else {;
-                          $.ajax({
-                            url: src1,
-                            method: "PUT",
-                            data: {
-                              status: "",
-                              key: id,
-                              id: $("#id_").val(),
-                              align: $("#align_").val(),
-                            },
-                            success: function () {
-                              $("#data").trigger("reset");
-                              $("#dialog").dialog("close");
-                              $("#fetch-data").click();
-                            },
-                            error: function () {
-                              alert("error");
-                            },
-                          });
-                        }
-                      },
-                      Cancel: function () {
-                        $("#data").trigger("reset");
-                        $(this).dialog("close");
-                      },
+                    $("#routes").val();
+                  $.getJSON({
+                    method: "GET",
+                    url: src1,
+                    data: {
+                      status: "",
+                      key: id,
+                      id: "",
+                      align: "",
                     },
-                  })
-                  .dialog("open");
-              });
-            });
+                    success: function (res) {
+                      $("#id_").val(res[0].id);
+                      $("#align_").val(res[0].align);
+                    },
+                  });
+                  $("#dialog")
+                    .dialog("option", {
+                      title: "Change link: ",
+                      buttons: {
+                        Save: function () {
+                          if ($("#id_").val() == "") {
+                            alert("ID / link name can not be empty!");
+                          } else {
+                            $.ajax({
+                              url: src1,
+                              method: "PUT",
+                              data: {
+                                status: "",
+                                key: id,
+                                id: $("#id_").val(),
+                                align: $("#align_").val(),
+                              },
+                              success: function () {
+                                $("#data").trigger("reset");
+                                $("#dialog").dialog("close");
+                                $("#fetch-data").click();
+                              },
+                              error: function () {
+                                alert("error");
+                              },
+                            });
+                          }
+                        },
+                        Cancel: function () {
+                          $("#data").trigger("reset");
+                          $(this).dialog("close");
+                        },
+                      },
+                    })
+                    .dialog("open");
+                });
+              }
+            );
           } else {
             $("#data tbody").append(
               "<tr><td colspan='7'><h3>!ERROR!<br><br>Please select route before search</h3></td></tr>"
