@@ -18,7 +18,9 @@
           buttons: {
             Add: function () {
               var src =
-                "https://proj-etc-db.up.railway.app/api/v1/"+$("#db").val()+"/" +
+                "https://proj-etc-db.up.railway.app/api/v1/" +
+                $("#db").val() +
+                "/" +
                 $("#routes_").val();
               if ($("#id_").val() == "") {
                 alert("You need to give id/link name!");
@@ -27,6 +29,8 @@
                   url: src,
                   method: "POST",
                   data: {
+                    status: "",
+                    key: "",
                     id: $("#id_").val(),
                     align: $("#align_").val(),
                   },
@@ -61,19 +65,17 @@
         $("#routes").append(new Option("No route selected", 0));
         $("#routes").append(new Option("navigation", "navigation", true, true));
         $("#routes_").append(new Option("No route selected", 0));
-        $("#routes_").append(new Option("navigation", "navigation", true, true));
+        $("#routes_").append(
+          new Option("navigation", "navigation", true, true)
+        );
         $("#fetch-data").click(function () {
           $("#data tbody").empty();
           if ($("#routes").val() != 0) {
             var src =
-              "https://proj-etc-db.up.railway.app/api/v1/"+$("#db").val()+"/" +
-              $("#routes").val() +
-              "/";
-            var arr = [];
-            if ($("#type").val() != "") {
-              arr.push("id:" + $("#type").val());
-            }
-            src = src + arr.join(".");
+              "https://proj-etc-db.up.railway.app/api/v1/" +
+              $("#db").val() +
+              "/" +
+              $("#routes").val();
             $.getJSON(src, function (res) {
               $.each(res, function (i, val) {
                 $("#data tbody").append(
@@ -95,10 +97,16 @@
                 $.ajax({
                   method: "DELETE",
                   url:
-                    "https://proj-etc-db.up.railway.app/api/v1/"+$("#db").val()+"/" +
-                    $("#routes").val() +
-                    "/key:" +
-                    id,
+                    "https://proj-etc-db.up.railway.app/api/v1/" +
+                    $("#db").val() +
+                    "/" +
+                    $("#routes").val(),
+                  data: {
+                    status: "",
+                    key: id,
+                    id: "",
+                    align: "",
+                  },
                   success: function () {
                     $("#fetch-data").click();
                   },
@@ -107,13 +115,19 @@
               $("[id*='upd_']").click(function () {
                 var id = this.id.split("_")[1];
                 var src1 =
-                  "https://proj-etc-db.up.railway.app/api/v1/"+$("#db").val()+"/" +
-                  $("#routes").val() +
-                  "/key:" +
-                  id;
+                  "https://proj-etc-db.up.railway.app/api/v1/" +
+                  $("#db").val() +
+                  "/" +
+                  $("#routes").val();
                 $.getJSON({
                   method: "GET",
                   url: src1,
+                  data: {
+                    status: "",
+                    key: id,
+                    id: "",
+                    align: "",
+                  },
                   success: function (res) {
                     $("#id_").val(res[0].id);
                     $("#align_").val(res[0].align);
@@ -126,11 +140,16 @@
                       Save: function () {
                         if ($("#id_").val() == "") {
                           alert("ID / link name can not be empty!");
-                        } else {
-                          var src2 = src1 +".id:"+$("#id_").val()+".align:"+$("#align_").val();
+                        } else {;
                           $.ajax({
-                            url: src2,
+                            url: src1,
                             method: "PUT",
+                            data: {
+                              status: "",
+                              key: id,
+                              id: $("#id_").val(),
+                              align: $("#align_").val(),
+                            },
                             success: function () {
                               $("#data").trigger("reset");
                               $("#dialog").dialog("close");
