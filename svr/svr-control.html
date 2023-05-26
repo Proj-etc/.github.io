@@ -76,8 +76,12 @@
               $("#db").val() +
               "/" +
               $("#routes").val();
-            var key = ""
-            if ($("#type").val() != "") {key = $("#type").val()} else {""};
+            var key = "";
+            if ($("#type").val() != "") {
+              key = $("#type").val();
+            } else {
+              ("");
+            }
             $.getJSON(
               src,
               {
@@ -129,20 +133,19 @@
                     $("#db").val() +
                     "/" +
                     $("#routes").val();
-                  $.getJSON({
-                    method: "GET",
-                    url: src1,
-                    data: {
+                  $.getJSON(
+                    src1,
+                    {
                       status: "",
                       key: id,
                       id: "",
                       align: "",
                     },
-                    success: function (res) {
+                    function (res) {
                       $("#id_").val(res[0].id);
                       $("#align_").val(res[0].align);
-                    },
-                  });
+                    }
+                  );
                   $("#dialog")
                     .dialog("option", {
                       title: "Change link: ",
