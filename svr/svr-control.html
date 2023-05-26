@@ -28,12 +28,14 @@
                 $.ajax({
                   url: src,
                   method: "POST",
-                  data: {
-                    status: "",
-                    key: "",
-                    id: $("#id_").val(),
-                    align: $("#align_").val(),
-                  },
+                  dataType: "json",
+                  data: JSON.stringify({
+                    "status": "",
+                    "key": "",
+                    "id": $("#id_").val(),
+                    "align": $("#align_").val(),
+                  }),
+                  contentType: "applicatin/json; charset=UTF-8",
                   success: function () {
                     $("#add-form").trigger("reset");
                     $("#dialog").dialog("close");
@@ -84,12 +86,6 @@
             }
             $.getJSON(
               src,
-              {
-                status: "",
-                key: key,
-                id: "",
-                align: "",
-              },
               function (res) {
                 $.each(res, function (i, val) {
                   $("#data tbody").append(
@@ -101,32 +97,33 @@
                       val.align +
                       "</td><td><button id='upd_" +
                       val.key +
-                      "'>Update</button></td></td><td><button id='del_" +
+                      "' disabled>Update</button></td></td><td><button id='del_" +
                       val.key +
-                      "'>Delete</button></td></tr>"
+                      "' disabled>Delete</button></td></tr>"
                   );
                 });
-                $("[id*='del_']").click(function () {
+                /*$("[id*='del_']").click(function () {
                   var id = this.id.split("_")[1];
                   $.ajax({
-                    method: "DELETE",
                     url:
                       "https://proj-etc-db.up.railway.app/api/v1/" +
                       $("#db").val() +
                       "/" +
                       $("#routes").val(),
-                    data: {
+                    type: "DELETE",
+                    data: JSON.stringify({
                       status: "",
                       key: id,
                       id: "",
                       align: "",
-                    },
+                    }),
+                    contentType: "applicatin/json",
                     success: function () {
                       $("#fetch-data").click();
                     },
                   });
-                });
-                $("[id*='upd_']").click(function () {
+                });*/
+                /*$("[id*='upd_']").click(function () {
                   var id = this.id.split("_")[1];
                   var src1 =
                     "https://proj-etc-db.up.railway.app/api/v1/" +
@@ -136,10 +133,10 @@
                   $.getJSON(
                     src1,
                     {
-                      status: "",
-                      key: id,
-                      id: "",
-                      align: "",
+                      "status": "",
+                      "key": id,
+                      "id": "",
+                      "align": "",
                     },
                     function (res) {
                       $("#id_").val(res[0].id);
@@ -157,12 +154,13 @@
                             $.ajax({
                               url: src1,
                               method: "PUT",
-                              data: {
-                                status: "",
-                                key: id,
-                                id: $("#id_").val(),
-                                align: $("#align_").val(),
-                              },
+                              data: JSON.stringify({
+                                "status": "",
+                                "key": id,
+                                "id": $("#id_").val(),
+                                "align": $("#align_").val(),
+                              }),
+                              contentType: "applicatin/json; charset=UTF-8",
                               success: function () {
                                 $("#data").trigger("reset");
                                 $("#dialog").dialog("close");
@@ -181,7 +179,7 @@
                       },
                     })
                     .dialog("open");
-                });
+                });*/
               }
             );
           } else {
@@ -268,16 +266,10 @@
             <th colspan="3" style="text-align: right">
               <select id="db"></select>
               <select id="routes"></select>
-              <input
-                type="text"
-                id="type"
-                placeholder="Type"
-                style="width: min-content"
-              />
               <button id="fetch-data">Fetch data from server</button>
             </th>
             <th colspan="4" style="text-align: right">
-              <button id="add-data">Add data to the server</button>
+              <button id="add-data" disabled>Add data to the server</button>
             </th>
           </tr>
         </thead>
