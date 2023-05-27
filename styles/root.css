@@ -24,7 +24,7 @@ body {
   border-left: 1.5px double rgb(155, 155, 155);
   background: rgba(237, 237, 237, 0.05);
   min-height: calc(
-    120vh - var(--navigation-height) - var(--top-height) -
+    100vh - var(--navigation-height) - var(--top-height) -
       var(--bottom-height) - var(--footer-height)
   );
   max-width: 1920px;

@@ -2,7 +2,7 @@
 $(document).ready(function () {
     $.ajax({
         type: "get",
-        url: "https://proj-etc-db.up.railway.app/api/v1/links/navigation",
+        url: "https://proj-etc-db.up.railway.app/api/v1/link/navigation",
         success: function (response) {
             $(response).each(function (i, val) { 
                 var navItem = document.createElement("li");
