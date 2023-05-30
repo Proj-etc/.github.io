@@ -84,21 +84,21 @@ h6 a:hover {
 }
 /**/
 h7 {
-    color: rgba(255, 255, 255, 1);
-    text-align: center;
-    font-size: 1rem;
-    font-weight: bold;
-  }
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+}
 
-  /* Other text: paragraphs etc*/
-  /* Paragraph */
-  p {
-    color: rgb(255, 255, 255);
-    text-align: center;
-    font-size: 1rem;
-    font-weight: bold;
+/* Other text: paragraphs etc*/
+/* Paragraph */
+p {
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
 }
 /* Label */
 label {
-    color: rgba(31, 31, 31, 0.75);
+  color: rgba(31, 31, 31, 0.75);
 }

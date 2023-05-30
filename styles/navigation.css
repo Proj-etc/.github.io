@@ -12,9 +12,9 @@
   color: rgba(255, 255, 255, 1);
   text-transform: uppercase;
 }
-.navbar-brand:hover{
-    color: rgba(255, 255, 255, 1);
-    cursor: pointer;
+.navbar-brand:hover {
+  color: rgba(255, 255, 255, 1);
+  cursor: pointer;
 }
 
 .navbar-brand img {
@@ -33,8 +33,8 @@
   align-self: center;
   cursor: pointer;
 }
-.nav-link:hover{
-    color: rgba(255, 255, 255, 1);
+.nav-link:hover {
+  color: rgba(255, 255, 255, 1);
 }
 /* Navigation bar active/current page */
 .nav-pills .nav-link.active,
